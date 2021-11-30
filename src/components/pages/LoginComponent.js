@@ -38,6 +38,7 @@ const LoginComponent = () =>  {
                                 margin="normal"
                                 variant="outlined"
                                 label="email"
+                                autoComplete="on"
                                 id="email"
                                 value={fields.email}
                                 onChange={handleFieldChange}
@@ -50,6 +51,7 @@ const LoginComponent = () =>  {
                                     type="password"
                                     margin="normal"
                                     variant="outlined"
+                                    autoComplete="on"
                                     required
                                     id="password"
                                     value={fields.password}

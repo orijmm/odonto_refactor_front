@@ -35,11 +35,14 @@ export default function Header(props) {
                     <Typography variant="h6" noWrap >
                         Welcome to User Dashboard
                     </Typography>
-                    {
+                    {/* {
                         token !== null && token !== "" ?
                             <Link to="/user/view-profile" > Profile</Link> :
                             ''
-                    }
+                    } */}
+                    <Typography variant="h6" noWrap >
+                        <Link to="/user/view-profile" > Profile</Link>
+                    </Typography>
                     
                     {
                         token !== null && token !== "" ?
