@@ -37,42 +37,41 @@ const RegisterComponent = () => {
     }
     return (
         <>
-            <Row>
-                <Col md={3}></Col>
+            <Row className="justify-content-md-center">
                 <Col md={6}>
                     <h2>
                         <b>Welcome to Register User Page</b>
                     </h2>
                     <Form onSubmit={UserRegister}>
-                        <Form.Group className="mb-3" controlId="formBasicname">
-                            <Form.Control 
-                            type="text" 
-                            id="name"
-                            value={fields.name}
-                            onChange={handleFieldChange} placeholder="Enter name" />
+                        <Form.Group className="mb-3" >
+                            <Form.Control
+                                type="text"
+                                id="name"
+                                value={fields.name}
+                                onChange={handleFieldChange} placeholder="Enter name" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicname">
-                            <Form.Control 
-                            type="email" 
-                            id="email"
-                            value={fields.email}
-                            onChange={handleFieldChange} placeholder="Enter email" />
+                        <Form.Group className="mb-3" >
+                            <Form.Control
+                                type="email"
+                                id="email"
+                                value={fields.email}
+                                onChange={handleFieldChange} placeholder="Enter email" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicname">
-                            <Form.Control 
-                            type="password" 
-                            id="password"
-                            value={fields.password}
-                            onChange={handleFieldChange}
-                            placeholder="Enter password" />
+                        <Form.Group className="mb-3" >
+                            <Form.Control
+                                type="password"
+                                id="password"
+                                value={fields.password}
+                                onChange={handleFieldChange}
+                                placeholder="Enter password" />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicname">
-                            <Form.Control 
-                            type="password" 
-                            id="password_confirmation"
-                            value={fields.password_confirmation}
-                            onChange={handleFieldChange}
-                            placeholder="Confirm password" />
+                        <Form.Group className="mb-3" >
+                            <Form.Control
+                                type="password"
+                                id="password_confirmation"
+                                value={fields.password_confirmation}
+                                onChange={handleFieldChange}
+                                placeholder="Confirm password" />
                         </Form.Group>
                         <div>
                             <div>
@@ -88,13 +87,11 @@ const RegisterComponent = () => {
                                 </div>
                             </div>
                             <div>
-                            <Button as={Link} to="/home">Back To Home Page </Button>
+                                <Button as={Link} to="/home">Back To Home Page </Button>
                             </div>
-                            <div></div>
                         </div>
                     </Form>
                 </Col>
-                <Col md={3}></Col>
             </Row>
         </>
     );
