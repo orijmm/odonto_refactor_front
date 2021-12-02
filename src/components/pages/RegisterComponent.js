@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, TextField, Card } from "@mui/material";
+// import { Button, TextField, Card } from "@mui/material";
+import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,7 @@ import { RegisterAction } from '../../redux/actions/AuthActions';
 const RegisterComponent = () => {
     const dispatch = useDispatch();
     //const authResponse = 
-    useSelector(state=>state.userAuth.authResponse);
+    useSelector(state => state.userAuth.authResponse);
     const [fields, setState] = useState({
         name: "",
         email: "",
@@ -35,85 +36,67 @@ const RegisterComponent = () => {
         return password !== password_confirmation ? true : false;
     }
     return (
-        <div>
-            <div>
-                <Card>
+        <>
+            <Row>
+                <Col md={3}></Col>
+                <Col md={6}>
                     <h2>
                         <b>Welcome to Register User Page</b>
                     </h2>
-                    <form onSubmit={UserRegister}>
+                    <Form onSubmit={UserRegister}>
+                        <Form.Group className="mb-3" controlId="formBasicname">
+                            <Form.Control 
+                            type="text" 
+                            id="name"
+                            value={fields.name}
+                            onChange={handleFieldChange} placeholder="Enter name" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicname">
+                            <Form.Control 
+                            type="email" 
+                            id="email"
+                            value={fields.email}
+                            onChange={handleFieldChange} placeholder="Enter email" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicname">
+                            <Form.Control 
+                            type="password" 
+                            id="password"
+                            value={fields.password}
+                            onChange={handleFieldChange}
+                            placeholder="Enter password" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicname">
+                            <Form.Control 
+                            type="password" 
+                            id="password_confirmation"
+                            value={fields.password_confirmation}
+                            onChange={handleFieldChange}
+                            placeholder="Confirm password" />
+                        </Form.Group>
                         <div>
-                            <TextField
-                                type="text"
-                                required
-                                margin="normal"
-                                variant="outlined"
-                                label="name"
-                                id="name"
-                                value={fields.name}
-                                onChange={handleFieldChange}
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                type="email"
-                                required
-                                margin="normal"
-                                variant="outlined"
-                                label="email"
-                                id="email"
-                                value={fields.email}
-                                onChange={handleFieldChange}
-                            />
-                        </div>
-                        <div>
-                            <div>
-                                <TextField
-                                    label="Password"
-                                    type="password"
-                                    margin="normal"
-                                    variant="outlined"
-                                    required
-                                    id="password"
-                                    value={fields.password}
-                                    onChange={handleFieldChange}
-                                />
-                            </div>
-                            <div>
-                                <TextField
-                                    label="Confirm Password"
-                                    type="password"
-                                    required
-                                    margin="normal"
-                                    variant="outlined"
-                                    id="password_confirmation"
-                                    value={fields.password_confirmation}
-                                    onChange={handleFieldChange}
-                                />
-                            </div>
                             <div>
                                 <Button
                                     type="submit"
-                                    variant="contained"
-                                    color="primary"
-                                    endIcon={<AccountCircleIcon />}
-                                >
+                                    variant="primary"
+                                ><AccountCircleIcon />
                                     <b>Register</b>
                                 </Button>
                                 <br />
                                 <div>
-                                    <Link to="/user/login">Login Here</Link>
+                                    <Button as={Link} to="/user/login" variant="secondary">Login Here</Button>
                                 </div>
                             </div>
                             <div>
-                                <Link to="/home">Back To Home Page </Link>
+                            <Button as={Link} to="/home">Back To Home Page </Button>
                             </div>
                             <div></div>
                         </div>
-                    </form>
-                </Card>
-            </div>
-        </div>
+                    </Form>
+                </Col>
+                <Col md={3}></Col>
+            </Row>
+        </>
     );
 }
 export default RegisterComponent;

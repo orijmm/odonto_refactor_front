@@ -1,6 +1,8 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
+import Button from 'react-bootstrap/Button'
+import { Container } from 'react-bootstrap';
 const HomeComponent = () => {
     const history = useNavigate();
     const gotToDashboard = (e, url) => {
@@ -8,11 +10,11 @@ const HomeComponent = () => {
     }
     return (
         <>
-                <div>
-                    <Button variant="contained" onClick={e => gotToDashboard(e, '/user')}
-                        size="large" color="primary">User Dashboard
+                <Container>
+                    <Button variant="primary" onClick={e => gotToDashboard(e, '/user')}
+                    >User Dashboard
                     </Button>
-                </div>
+                </Container>
         </>
     )
 }
