@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginAction } from '../../redux/actions/AuthActions';
+import usePostData from '../../redux/actions/AuthActions'
 import { useNavigate, Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 const LoginComponent = () =>  {
+    const { LoginAction } = usePostData();
     const history = useNavigate();
-    //console.log(history);
     const dispatch = useDispatch();
-    //const authResponse = 
-    useSelector(state=>state.userAuth.authResponse);
+    // const authResponse = useSelector(state=>state.userAuth.authResponse);
     const [fields, setState] = useState({
         email: "",
         password: "",
@@ -22,7 +21,6 @@ const LoginComponent = () =>  {
     }
     const UserLogin = (e) => {
         e.preventDefault();
-        console.log(fields);
         dispatch(LoginAction(fields, history));
     };
     return (
@@ -38,7 +36,13 @@ const LoginComponent = () =>  {
                             autoComplete="on"
                             required
                             value={fields.email}
-                            onChange={handleFieldChange} placeholder="Enter email" />
+                            onChange={handleFieldChange}
+                            placeholder="Enter email"
+                            isInvalid={!fields.email}
+                             />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a valid email.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Control 
@@ -46,7 +50,13 @@ const LoginComponent = () =>  {
                             id="password"
                             value={fields.password}
                             onChange={handleFieldChange}
-                            placeholder="Enter password" />
+                            placeholder="Enter password"
+                            isInvalid={!fields.password}
+                            autoComplete="on"
+                             />
+                             <Form.Control.Feedback type="invalid">
+                                Please provide a password.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <div>
                             <div>
@@ -57,12 +67,10 @@ const LoginComponent = () =>  {
                                     <b>Login</b>
                                 </Button>
                                 <br />
+                                <br />
                                 <div>
                                     <Button as={Link} to="/user/register" variant="secondary">Register Here</Button>
                                 </div>
-                            </div>
-                            <div>
-                                <Button as={Link} to="/home">Back To Home Page </Button>
                             </div>
                         </div>
                     </Form>

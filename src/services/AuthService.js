@@ -13,7 +13,6 @@ export const LoginUserService = (credentials) => {
     const http = new HttpService();
     let loginUrl = "users/login";
     return http.postData(credentials, loginUrl).then((data) => {
-        console.log(data);
         return data;
     }).catch((error) => {
         return error;;
@@ -27,6 +26,6 @@ export const LogOutUserService = () => {
         console.log(data);
         return data;
     }).catch((error) => {
-        return error;;
+        return error;
     })
 }

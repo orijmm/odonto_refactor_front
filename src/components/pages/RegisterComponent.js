@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 // import { Button, TextField, Card } from "@mui/material";
-import { Button, Card, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { RegisterAction } from '../../redux/actions/AuthActions';
+import usePostData from '../../redux/actions/AuthActions';
 
 const RegisterComponent = () => {
     const dispatch = useDispatch();
-    //const authResponse = 
-    useSelector(state => state.userAuth.authResponse);
+    const { RegisterAction } = usePostData();
     const [fields, setState] = useState({
         name: "",
         email: "",
@@ -48,14 +47,24 @@ const RegisterComponent = () => {
                                 type="text"
                                 id="name"
                                 value={fields.name}
-                                onChange={handleFieldChange} placeholder="Enter name" />
+                                onChange={handleFieldChange}
+                                placeholder="Enter name"
+                                isInvalid={!fields.name} />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a name.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" >
                             <Form.Control
                                 type="email"
                                 id="email"
                                 value={fields.email}
-                                onChange={handleFieldChange} placeholder="Enter email" />
+                                onChange={handleFieldChange}
+                                placeholder="Enter email"
+                                isInvalid={!fields.email} />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a valid email.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" >
                             <Form.Control
@@ -63,7 +72,12 @@ const RegisterComponent = () => {
                                 id="password"
                                 value={fields.password}
                                 onChange={handleFieldChange}
-                                placeholder="Enter password" />
+                                placeholder="Enter password"
+                                isInvalid={!fields.password}
+                                autoComplete="on" />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a password.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group className="mb-3" >
                             <Form.Control
@@ -71,7 +85,12 @@ const RegisterComponent = () => {
                                 id="password_confirmation"
                                 value={fields.password_confirmation}
                                 onChange={handleFieldChange}
-                                placeholder="Confirm password" />
+                                placeholder="Confirm password"
+                                isInvalid={!fields.password_confirmation}
+                                autoComplete="on" />
+                            <Form.Control.Feedback type="invalid">
+                                Please confirm password.
+                            </Form.Control.Feedback>
                         </Form.Group>
                         <div>
                             <div>
@@ -82,12 +101,10 @@ const RegisterComponent = () => {
                                     <b>Register</b>
                                 </Button>
                                 <br />
+                                <br />
                                 <div>
                                     <Button as={Link} to="/user/login" variant="secondary">Login Here</Button>
                                 </div>
-                            </div>
-                            <div>
-                                <Button as={Link} to="/home">Back To Home Page </Button>
                             </div>
                         </div>
                     </Form>
